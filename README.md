@@ -4,7 +4,7 @@ Slides for my talk _Modularizing Projects with the Java Module System and Gradle
 
 [![java-modules-with-gradle.png](java-modules-with-gradle.png)](java-modules-with-gradle.pdf)
 
-Example project used in slides: [java-modules-example](java-modules-example) 
+**Example project:** [java-modules-example](java-modules-example) 
 
 Full-fledged Java Module System project setup using Gradle with the plugins below:
 https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system_pure_modules

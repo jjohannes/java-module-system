@@ -1,0 +1,1 @@
+plugins { id("my-java-module") }

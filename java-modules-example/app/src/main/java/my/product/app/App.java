@@ -1,20 +1,12 @@
 package my.product.app;
 
-import org.slf4j.LoggerFactory;
-
-import static my.product.modulea.StringUtils.join;
-import static my.product.modulea.StringUtils.split;
+import jakarta.annotation.Nonnull;
+import my.product.service.Service;
 
 public class App {
-    public static void main(String[] args) {
-        Message message = new Message();
-        String result = splitAndJoin(message.getMessage());
-        LoggerFactory.getLogger(App.class).info("running app in module "
-                + App.class.getModule().getName());
-        System.out.println(result);
-    }
 
-    private static String splitAndJoin(String s) {
-        return join(split(s));
+    public static void main(@Nonnull String[] args) {
+        System.out.println(App.class.getModule().getName() + " >> running app");
+        Service.create().process();
     }
 }
