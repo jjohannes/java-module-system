@@ -14,6 +14,7 @@ gradle.beforeProject {
             apply(plugin = "org.gradlex.java-module-versions")
         }
         layout.projectDirectory.file("src/main/java/${mainClassName.replace('.', '/')}.java").asFile.exists() -> {
+            apply(plugin = "metadata-patch")
             apply(plugin = "application")
             apply(plugin = "java-module")
             extensions.configure<JavaApplication> {
@@ -22,6 +23,7 @@ gradle.beforeProject {
             }
         }
         else -> {
+            apply(plugin = "metadata-patch")
             apply(plugin = "java-library")
             apply(plugin = "java-module")
         }
