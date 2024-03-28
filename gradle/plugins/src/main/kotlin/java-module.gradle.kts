@@ -8,6 +8,11 @@ repositories {
     mavenCentral()
 }
 
+// Central version management for 3rd party modules
+javaModuleDependencies {
+    versionsFromPlatformAndConsistentResolution(":versions", ":app")
+}
+
 // Tweak the Java building process (Java version, encoding, test memory settings, ...)
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(21)
