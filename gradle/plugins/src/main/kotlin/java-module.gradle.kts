@@ -3,6 +3,11 @@ plugins {
     id("org.gradlex.java-module-dependencies")
 }
 
+// Repository to find 3rd party modules
+repositories {
+    mavenCentral()
+}
+
 // Tweak the Java building process (Java version, encoding, test memory settings, ...)
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(21)
