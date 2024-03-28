@@ -1,0 +1,3 @@
+module amazing {
+    exports amazing;
+}
