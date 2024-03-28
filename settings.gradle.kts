@@ -1,5 +1,6 @@
-include(":app")
-project(":app").projectDir = file("modules/app")
-
-include(":amazing")
-project(":amazing").projectDir = file("modules/amazing")
+pluginManagement {
+    includeBuild("gradle/plugins")
+}
+plugins {
+    id("opinionated-java-module-build-system")
+}
