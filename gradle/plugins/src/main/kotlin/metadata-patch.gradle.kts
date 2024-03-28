@@ -11,6 +11,20 @@ jvmDependencyConflicts {
             removeDependency("org.checkerframework:checker-qual")
             removeDependency("com.google.errorprone:error_prone_annotations")
         }
+        module("org.openjfx:javafx-base") {
+            addTargetPlatformVariant("", "none", "none")
+            addTargetPlatformVariant("linux", OperatingSystemFamily.LINUX, MachineArchitecture.X86_64)
+            addTargetPlatformVariant("mac", OperatingSystemFamily.MACOS, MachineArchitecture.X86_64)
+            addTargetPlatformVariant("mac-aarch64", OperatingSystemFamily.MACOS, MachineArchitecture.ARM64)
+            addTargetPlatformVariant("win", OperatingSystemFamily.WINDOWS, MachineArchitecture.X86_64)
+        }
+        module("org.openjfx:javafx-graphics") {
+            addTargetPlatformVariant("", "none", "none")
+            addTargetPlatformVariant("linux", OperatingSystemFamily.LINUX, MachineArchitecture.X86_64)
+            addTargetPlatformVariant("mac", OperatingSystemFamily.MACOS, MachineArchitecture.X86_64)
+            addTargetPlatformVariant("mac-aarch64", OperatingSystemFamily.MACOS, MachineArchitecture.ARM64)
+            addTargetPlatformVariant("win", OperatingSystemFamily.WINDOWS, MachineArchitecture.X86_64)
+        }
     }
 }
 
