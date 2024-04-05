@@ -14,6 +14,7 @@ repositories {
 // Central version management for 3rd party modules
 javaModuleDependencies {
     versionsFromPlatformAndConsistentResolution(":versions", ":app")
+    configurations["mainRuntimeClasspath"].extendsFrom(configurations["internal"])
 }
 
 // Multi target support and packaging
@@ -52,4 +53,8 @@ tasks.withType<JavaCompile>().configureEach {
 tasks.withType<Test>().configureEach {
     maxParallelForks = 4
     maxHeapSize = "1g"
+}
+
+tasks.check {
+    dependsOn(tasks.checkAllModuleInfo)
 }

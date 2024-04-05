@@ -1,3 +1,7 @@
+plugins {
+    id("com.gradle.develocity")
+}
+
 layout.rootDirectory.dir("modules").asFile.listFiles()?.forEach { folder ->
     if (File(folder, "src/main/java/module-info.java").exists()) {
         include(folder.name)
@@ -9,6 +13,9 @@ val mainClassName = "app.App"
 
 gradle.beforeProject {
     when {
+        this == rootProject -> {
+            apply(plugin = "com.autonomousapps.dependency-analysis")
+        }
         name == "versions" ->  {
             apply(plugin = "java-platform")
             apply(plugin = "org.gradlex.java-module-versions")
@@ -32,3 +39,21 @@ gradle.beforeProject {
 
 include(":versions")
 project(":versions").projectDir = file("gradle/versions")
+
+develocity {
+    buildScan {
+        termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
+        termsOfUseAgree = "yes"
+    }
+}
+
+buildCache {
+    remote<HttpBuildCache> {
+        url = uri("https://gradle.onepiece.software:5071/cache")
+        if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
+            isPush = true;
+            credentials.username = providers.environmentVariable("BUILD_CACHE_USER").get()
+            credentials.password = providers.environmentVariable("BUILD_CACHE_PWD").get()
+        }
+    }
+}
