@@ -37,4 +37,4 @@ jobs:
       - uses: actions/upload-artifact@v4.3.1
         with:
           name: Application Package ${{ matrix.os }}
-          path: modules/app/build/packages/*/*
+          path: build/app/packages/*/*

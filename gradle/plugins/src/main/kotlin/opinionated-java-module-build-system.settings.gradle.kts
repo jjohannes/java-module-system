@@ -12,6 +12,7 @@ layout.rootDirectory.dir("modules").asFile.listFiles()?.forEach { folder ->
 val mainClassName = "app.App"
 
 gradle.beforeProject {
+    layout.buildDirectory.set(settings.layout.rootDirectory.dir("build").dir(name))
     when {
         this == rootProject -> {
             apply(plugin = "com.autonomousapps.dependency-analysis")
