@@ -2,6 +2,7 @@ plugins {
     id("java")
     id("org.gradlex.java-module-dependencies")
     id("org.gradlex.java-module-packaging")
+    id("org.gradlex.java-module-testing")
 }
 
 version = "1.0"

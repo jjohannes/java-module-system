@@ -11,8 +11,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello from module " + App.class.getModule().getName());
+        primaryStage.setTitle("Hello from module " + moduleName());
         AmazingService.DEFAULT.compute();
         primaryStage.show();
+    }
+
+    static String moduleName() {
+        return App.class.getModule().getName();
     }
 }
