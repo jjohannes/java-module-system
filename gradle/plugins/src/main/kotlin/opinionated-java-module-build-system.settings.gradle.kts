@@ -9,10 +9,10 @@ layout.rootDirectory.dir("modules").asFile.listFiles()?.forEach { folder ->
     }
 }
 
-val mainClassName = "app.App"
-
 gradle.beforeProject {
     layout.buildDirectory.set(settings.layout.rootDirectory.dir("build").dir(name))
+    val mainClassName = providers.fileContents(layout.projectDirectory.file("main-class.txt")).asText
+
     when {
         this == rootProject -> {
             apply(plugin = "com.autonomousapps.dependency-analysis")
@@ -21,13 +21,13 @@ gradle.beforeProject {
             apply(plugin = "java-platform")
             apply(plugin = "org.gradlex.java-module-versions")
         }
-        layout.projectDirectory.file("src/main/java/${mainClassName.replace('.', '/')}.java").asFile.exists() -> {
+        mainClassName.isPresent -> {
             apply(plugin = "metadata-patch")
             apply(plugin = "application")
             apply(plugin = "java-module")
             extensions.configure<JavaApplication> {
-                mainClass = mainClassName
-                mainModule = mainClassName.substring(0, mainClassName.lastIndexOf('.'))
+                mainClass = mainClassName.get()
+                mainModule = mainClassName.get().substring(0, mainClassName.get().lastIndexOf('.'))
             }
         }
         else -> {
@@ -41,6 +41,10 @@ gradle.beforeProject {
 include(":versions")
 project(":versions").projectDir = file("gradle/versions")
 
+dependencyResolutionManagement {
+    repositories.mavenCentral() // Repository to find 3rd party modules
+}
+
 develocity {
     buildScan {
         termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
@@ -50,7 +54,7 @@ develocity {
 
 buildCache {
     remote<HttpBuildCache> {
-        url = uri("https://gradle.onepiece.software:5071/cache")
+        url = uri("https://cache.onepiece.software/cache")
         if (providers.environmentVariable("CI").getOrElse("false").toBoolean()) {
             isPush = true;
             credentials.username = providers.environmentVariable("BUILD_CACHE_USER").get()

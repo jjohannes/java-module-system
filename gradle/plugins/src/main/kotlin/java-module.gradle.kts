@@ -1,21 +1,20 @@
 plugins {
     id("java")
+    id("org.gradlex.jvm-dependency-conflict-resolution")
     id("org.gradlex.java-module-dependencies")
     id("org.gradlex.java-module-packaging")
     id("org.gradlex.java-module-testing")
 }
 
-version = "1.0"
-
-// Repository to find 3rd party modules
-repositories {
-    mavenCentral()
-}
+version = providers.fileContents(isolated.rootProject.projectDirectory
+    .file("gradle/version.txt")).asText.get().trim()
 
 // Central version management for 3rd party modules
-javaModuleDependencies {
-    versionsFromPlatformAndConsistentResolution(":versions", ":app")
-    configurations["mainRuntimeClasspath"].extendsFrom(configurations["internal"])
+jvmDependencyConflicts {
+    consistentResolution {
+        platform(":versions")
+        providesVersions(":app")
+    }
 }
 
 // Multi target support and packaging
@@ -46,7 +45,10 @@ javaModulePackaging {
 
 // Tweak the Java building process (Java version, encoding, test memory settings, ...)
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    toolchain.languageVersion = JavaLanguageVersion.of(
+        providers.fileContents(isolated.rootProject.projectDirectory
+            .file("gradle/java-version.txt")).asText.get().trim()
+    )
 }
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
