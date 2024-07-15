@@ -1,9 +1,11 @@
+import org.gradlex.javamodule.dependencies.tasks.ModuleDirectivesScopeCheck
+
 plugins {
-    id("java")
-    id("org.gradlex.jvm-dependency-conflict-resolution")
-    id("org.gradlex.java-module-dependencies")
+    id("java-library")
     id("org.gradlex.java-module-packaging")
     id("org.gradlex.java-module-testing")
+    id("dependency-analysis")
+    id("metadata-patch")
 }
 
 version = providers.fileContents(isolated.rootProject.projectDirectory
@@ -59,5 +61,5 @@ tasks.withType<Test>().configureEach {
 }
 
 tasks.check {
-    dependsOn(tasks.checkAllModuleInfo)
+    dependsOn(tasks.withType<ModuleDirectivesScopeCheck>())
 }
