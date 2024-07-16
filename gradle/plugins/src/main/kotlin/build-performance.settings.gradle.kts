@@ -1,9 +1,6 @@
-import org.gradle.caching.http.HttpBuildCache
-import org.gradle.kotlin.dsl.remote
-
+// Configure performance and monitoring aspects: Remote Build Cache and Develocity Build Scans
 plugins {
     id("com.gradle.develocity")
-    id("org.gradlex.java-module-dependencies")
 }
 
 develocity {

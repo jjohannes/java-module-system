@@ -2,6 +2,10 @@ name: "CI Build"
 
 on: [ push ]
 
+env:
+  BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
+  BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -13,9 +17,6 @@ jobs:
           java-version-file: ./gradle/java-version.txt
       - uses: gradle/actions/setup-gradle@v3
       - run: "./gradlew check"
-        env:
-          BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
-          BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
 
   package:
     needs: check
@@ -31,9 +32,6 @@ jobs:
           java-version-file: ./gradle/java-version.txt
       - uses: gradle/actions/setup-gradle@v3
       - run: "./gradlew assemble${{ matrix.os }}"
-        env:
-          BUILD_CACHE_USER: ${{ secrets.BUILD_CACHE_USER }}
-          BUILD_CACHE_PWD: ${{ secrets.BUILD_CACHE_PWD }}
       - uses: actions/upload-artifact@v4
         with:
           name: Application Package ${{ matrix.os }}
