@@ -1,1 +1,0 @@
-application.mainClass = "app.App"

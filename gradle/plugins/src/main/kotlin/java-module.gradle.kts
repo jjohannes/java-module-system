@@ -18,3 +18,8 @@ jvmDependencyConflicts {
         providesVersions(":app")
     }
 }
+
+// If application, expect application class: <module-name>.App
+plugins.withId("application") {
+    configure<JavaApplication> { mainClass.set(mainModule.map { name -> "$name.App" }) }
+}
