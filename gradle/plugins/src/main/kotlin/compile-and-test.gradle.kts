@@ -17,3 +17,13 @@ tasks.withType<Test>().configureEach {
     maxParallelForks = 4
     maxHeapSize = "1g"
 }
+testing.suites.withType<JvmTestSuite> {
+    // remove automatically added compile time dependencies, as we define them explicitly
+    configurations.getByName(sources.implementationConfigurationName) {
+        withDependencies { removeIf { it.group == "org.junit.jupiter" && it.name == "junit-jupiter" } }
+    }
+    // Configure common test runtime dependencies for *all* projects
+    dependencies {
+        runtimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    }
+}
