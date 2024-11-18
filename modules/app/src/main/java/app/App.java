@@ -16,7 +16,7 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    static String moduleName() {
+    private static String moduleName() {
         return App.class.getModule().getName();
     }
 }

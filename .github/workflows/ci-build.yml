@@ -16,7 +16,7 @@ jobs:
           distribution: temurin
           java-version-file: ./gradle/java-version.txt
       - uses: gradle/actions/setup-gradle@v3
-      - run: "./gradlew check"
+      - run: "./gradlew test"
 
   package:
     needs: check
@@ -30,6 +30,8 @@ jobs:
         with:
           distribution: temurin
           java-version-file: ./gradle/java-version.txt
+      - uses: gradle/actions/setup-gradle@v3
+      - run: "./gradlew test${{ matrix.os }}"
       - uses: gradle/actions/setup-gradle@v3
       - run: "./gradlew assemble${{ matrix.os }}"
       - uses: actions/upload-artifact@v4

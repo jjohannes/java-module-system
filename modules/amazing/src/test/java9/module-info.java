@@ -1,4 +1,4 @@
-open module amazing.test {
+module amazing.test {
     requires amazing;
     requires org.junit.jupiter.api;
 }

@@ -9,7 +9,10 @@ configure<JavaModulesExtension> {
     directory("modules") {
         plugin("java-module")
         group = "org.example"
-        module("app") { plugin("application") }
+        module("app") {
+            plugin("application")
+            plugin("multi-target-tests")
+        }
     }
     versions("gradle/versions")
 }

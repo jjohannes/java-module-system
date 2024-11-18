@@ -2,6 +2,7 @@
 plugins {
     id("java")
     id("org.gradlex.java-module-testing")
+    id("org.gradlex.java-module-packaging")
 }
 
 java {
@@ -23,7 +24,5 @@ testing.suites.withType<JvmTestSuite> {
         withDependencies { removeIf { it.group == "org.junit.jupiter" && it.name == "junit-jupiter" } }
     }
     // Configure common test runtime dependencies for *all* projects
-    dependencies {
-        runtimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    }
+    dependencies { runtimeOnly("org.junit.jupiter:junit-jupiter-engine") }
 }
