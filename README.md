@@ -16,10 +16,19 @@ With that accidental complexity in the module setup is avoided.
 
 ### Learn more
 
+- Browse slides of my 2025 talk [Combining Java Modules and Gradle for elegant project structures](docs/java-modules-and-gradle-2025.pdf) which is based on this sample
 - Watch my 2024 talk [Boosting Developer Productivity Through Better Modularity](https://dpe.org/sessions/jendrik-johannes/boosting-developer-productivity-through-better-modularity)) (and [browse the slides](docs/developer-productivity-and-modularity-2024.pdf)) which uses this example
 - Browse slides of my 2024 talk [Combining Java Modules and Gradle for elegant project structures](docs/java-modules-and-gradle-2024.pdf) which is based on this sample
 - Browse slides of my 2023 talk [Modularizing Projects with the Java Module System and Gradle](docs/java-modules-and-gradle-2023.pdf) which gives more background on the modularity concepts in Java and Gradle
 - Watch my YouTube playlist [Understanding Gradle – Java Modularity](https://www.youtube.com/playlist?list=PLWQK2ZdV4Yl092zlY7Dy1knCmi0jhTH3H) for even more information on modularity in Java and how it is handled in Gradle
+
+### In action: projects that use this setup
+
+- [hiero-ledger/hiero-gradle-conventions](https://github.com/hiero-ledger/hiero-gradle-conventions) use by
+    - [hiero-ledger/hiero-consensus-node](https://github.com/hiero-ledger/hiero-consensus-node)
+    - [hiero-ledger/hiero-sdk-java](https://github.com/hiero-ledger/hiero-sdk-java)
+    - ...and other [hiero-ledger](https://github.com/hiero-ledger) projects
+- [jjohannes/gradle-project-setup-howto/java_module_system](https://github.com/jjohannes/gradle-project-setup-howto/tree/java_module_system)
 
 ### Build the example
 
