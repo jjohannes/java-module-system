@@ -1,3 +1,4 @@
+
 plugins {
     id("org.gradlex.jvm-dependency-conflict-resolution")
     id("org.gradlex.extra-java-module-info")
@@ -15,6 +16,7 @@ jvmDependencyConflicts {
             module("org.openjfx:javafx-$jfxModule") {
                 addTargetPlatformVariant("", "none", "none")
                 addTargetPlatformVariant("linux", OperatingSystemFamily.LINUX, MachineArchitecture.X86_64)
+                addTargetPlatformVariant("linux-aarch64", OperatingSystemFamily.LINUX, MachineArchitecture.ARM64)
                 addTargetPlatformVariant("mac", OperatingSystemFamily.MACOS, MachineArchitecture.X86_64)
                 addTargetPlatformVariant("mac-aarch64", OperatingSystemFamily.MACOS, MachineArchitecture.ARM64)
                 addTargetPlatformVariant("win", OperatingSystemFamily.WINDOWS, MachineArchitecture.X86_64)
