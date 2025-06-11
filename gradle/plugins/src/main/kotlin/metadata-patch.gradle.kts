@@ -1,4 +1,3 @@
-import org.gradle.internal.impldep.org.apache.http.client.methods.RequestBuilder.patch
 
 plugins {
     id("org.gradlex.jvm-dependency-conflict-resolution")
