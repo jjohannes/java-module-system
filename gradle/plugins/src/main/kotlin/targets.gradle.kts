@@ -9,6 +9,11 @@ javaModulePackaging {
         architecture = MachineArchitecture.X86_64
         packageTypes = listOf("deb")
     }
+    target("ubuntu-22.04-arm") {
+        operatingSystem = OperatingSystemFamily.LINUX
+        architecture = MachineArchitecture.ARM64
+        packageTypes = listOf("deb")
+    }
     target("macos-13") {
         operatingSystem = OperatingSystemFamily.MACOS
         architecture = MachineArchitecture.X86_64
