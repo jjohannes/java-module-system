@@ -33,7 +33,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
       - run: "./gradlew test${{ matrix.os }}"
       - uses: gradle/actions/setup-gradle@v3
-      - run: "./gradlew assemble${{ matrix.os }}"
+      - run: "./gradlew jpackage${{ matrix.os }}"
       - uses: actions/upload-artifact@v4
         with:
           name: Application Package ${{ matrix.os }}
