@@ -16,6 +16,7 @@ With that accidental complexity in the module setup is avoided.
 
 ### Learn more
 
+- Browse slides of my 2026 talk [9 years after Java 9: What do we do with the Module System](https://github.com/jjohannes/starfleet-database/blob/main/docs/java-modules-2026.pdf)
 - Browse slides of my 2025 talk [Combining Java Modules and Gradle for elegant project structures](docs/java-modules-and-gradle-2025.pdf) which is based on this sample
 - Watch my 2024 talk [Boosting Developer Productivity Through Better Modularity](https://dpe.org/sessions/jendrik-johannes/boosting-developer-productivity-through-better-modularity)) (and [browse the slides](docs/developer-productivity-and-modularity-2024.pdf)) which uses this example
 - Browse slides of my 2024 talk [Combining Java Modules and Gradle for elegant project structures](docs/java-modules-and-gradle-2024.pdf) which is based on this sample
